@@ -93,4 +93,30 @@ except Exception as e:
     print(f"\n[CRITICAL] Staging Pipeline Broken: {e}")
 ```
 local host link: ` http://localhost:5000 `
-email: `shaheenaameer2003@gmail.com`
+
+
+
+Project Structure
+.github/workflows/: Automated CI/CD pipelines (Test & Retrain).
+
+scripts/: Production logic for drift detection and automated retraining.
+
+tests/: Unit and integration tests for model robustness.
+
+mlflow/: Experiment tracking and model registry governance.
+
+# How It Works
+Drift Detection: test_drift.py runs on a schedule or manual trigger, comparing live data against reference distributions.
+
+Automated Retraining: If drift exceeds defined thresholds, GitHub Actions triggers retrain_pipeline.py.
+
+Validation & Registry: The new model is trained, validated, stamped with governance metadata, and registered in MLflow under the @staging alias.
+
+Secure Deployment: Before promotion to @production, the model undergoes a skops type-inspection scan to ensure CVE compliance.
+
+# Contact & Contribution
+```Developer: Ayesha Aameer
+
+Email: shaheenaameer2003@gmail.com
+
+Built for high-assurance, autonomous predictive maintenance environments.```
