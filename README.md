@@ -106,13 +106,13 @@ tests/: Unit and integration tests for model robustness.
 mlflow/: Experiment tracking and model registry governance.
 
 # How It Works
-Drift Detection: test_drift.py runs on a schedule or manual trigger, comparing live data against reference distributions.
+- Drift Detection: test_drift.py runs on a schedule or manual trigger, comparing live data against reference distributions.
 
-Automated Retraining: If drift exceeds defined thresholds, GitHub Actions triggers retrain_pipeline.py.
+- Automated Retraining: If drift exceeds defined thresholds, GitHub Actions triggers retrain_pipeline.py.
 
-Validation & Registry: The new model is trained, validated, stamped with governance metadata, and registered in MLflow under the @staging alias.
+- Validation & Registry: The new model is trained, validated, stamped with governance metadata, and registered in MLflow under the @staging alias.
 
-Secure Deployment: Before promotion to @production, the model undergoes a skops type-inspection scan to ensure CVE compliance.
+- Secure Deployment: Before promotion to @production, the model undergoes a skops type-inspection scan to ensure CVE compliance, then serves predictions via the FastAPI interface.
 
 # Contact & Contribution
 ```Developer: Ayesha Aameer
